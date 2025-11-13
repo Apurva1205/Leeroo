@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Apurva Chavan • Founding Engineer for Leeroo (X25)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg-root: #020617;
+      --bg-gradient-top: #020617;
+      --bg-gradient-bottom: #020617;
+      --bg-card: #020617;
+      --bg-chip: #020617;
+      --border-soft: #1e293b;
+      --accent: #22d3ee;
+      --accent-strong: #a3e635;
+      --accent-soft: rgba(34, 211, 238, 0.3);
+      --accent-soft-2: rgba(163, 230, 53, 0.2);
+      --text-main: #e5e7eb;
+      --text-soft: #9ca3af;
+      --text-muted: #6b7280;
+      --radius-card: 18px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 22px 60px rgba(15, 23, 42, 0.90);
+      --font-main: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --transition-fast: 0.18s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-main);
+      background:
+        radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.16) 0, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(163, 230, 53, 0.16) 0, transparent 55%),
+        radial-gradient(circle at 120% -10%, rgba(236, 72, 153, 0.14) 0, transparent 60%),
+        linear-gradient(to bottom, var(--bg-gradient-top), var(--bg-gradient-bottom));
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 26px 16px 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 930px) {
+      .page {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* LEFT SIDEBAR */
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      align-self: flex-start;
+      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.22), transparent 55%),
+                  rgba(15, 23, 42, 0.95);
+      border-radius: 20px;
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 16px;
+    }
+
+    @media (max-width: 930px) {
+      .sidebar {
+        position: static;
+      }
+    }
+
+    .avatar-ring {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      padding: 2px;
+      background: conic-gradient(from 180deg, #22d3ee, #a3e635, #f97316, #22d3ee);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 16px 36px rgba(8, 47, 73, 0.9);
+    }
+
+    .avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 0, #0f172a, #020617 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .sidebar-header {
+      margin-top: 10px;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .sidebar-role {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-top: 3px;
+    }
+
+    .sidebar-tagline {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .sidebar-tagline span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .sidebar-links {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.78rem;
+    }
+
+    .sidebar-link {
+      padding: 5px 11px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .sidebar-link:hover {
+      background: rgba(15, 23, 42, 1);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
+    }
+
+    .nav-list {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(30, 64, 175, 0.7);
+    }
+
+    .nav-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .nav-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 4px;
+      font-size: 0.8rem;
+    }
+
+    .nav-items a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      color: var(--text-soft);
+      cursor: pointer;
+      transition: color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-items a::before {
+      content: "▹";
+      font-size: 0.7rem;
+      color: var(--accent);
+      opacity: 0.8;
+    }
+
+    .nav-items a:hover {
+      color: var(--accent-strong);
+      transform: translateX(2px);
+    }
+
+    .sidebar-meta {
+      margin-top: 18px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .meta-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .meta-pill {
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      background: rgba(15, 23, 42, 0.92);
+      color: var(--text-soft);
+    }
+
+    .meta-pill strong {
+      color: var(--accent-strong);
+      font-weight: 500;
+    }
+
+    /* RIGHT CONTENT */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.18), transparent 60%),
+                  radial-gradient(circle at 100% 0, rgba(236, 72, 153, 0.16), transparent 60%),
+                  rgba(15, 23, 42, 0.96);
+      border-radius: 22px;
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 14px;
+    }
+
+    .hero-top-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .hero-company {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .company-pill {
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      font-size: 0.78rem;
+      color: var(--text-soft);
+    }
+
+    .company-pill span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .location-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-title-main {
+      font-size: 1.55rem;
+      margin: 0 0 6px;
+    }
+
+    .hero-title-main span {
+      color: var(--accent-strong);
+    }
+
+    .hero-sub {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      max-width: 640px;
+    }
+
+    .hero-sub strong {
+      color: var(--text-main);
+    }
+
+    .hero-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 12px;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 720px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-col {
+      border-radius: 16px;
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      background: rgba(15, 23, 42, 0.96);
+      padding: 10px 11px 9px;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .hero-value {
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .hero-tag {
+      padding: 2px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(51, 65, 85, 0.9);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    .hero-cta-row {
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 8px 15px;
+      border-radius: var(--radius-pill);
+      border: 1px solid transparent;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.45), rgba(8, 47, 73, 1));
+      color: #ecfeff;
+      border-color: rgba(56, 189, 248, 0.9);
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 0.9);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 56px rgba(7, 89, 133, 0.95);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.94);
+      border-color: rgba(51, 65, 85, 0.9);
+      color: var(--text-soft);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-mini-note {
+      color: var(--text-muted);
+    }
+
+    .hero-mini-note span {
+      color: var(--accent);
+    }
+
+    /* SECTIONS */
+    section {
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(30, 64, 175, 0.8);
+      box-shadow: var(--shadow-soft);
+      padding: 14px 16px 12px;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      margin: 0 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    h2 span {
+      width: 22px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+    }
+
+    .section-body {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+    }
+
+    .section-body strong {
+      color: var(--text-main);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 6px;
+      font-size: 0.78rem;
+    }
+
+    .chip {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-soft);
+    }
+
+    .chip.highlight {
+      border-color: rgba(34, 211, 238, 0.9);
+      color: var(--accent);
+    }
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 4px 0 0;
+      font-size: 0.86rem;
+      color: var(--text-soft);
+    }
+
+    .list li {
+      margin-bottom: 6px;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 0.72rem;
+      color: var(--accent-strong);
+    }
+
+    .subheading {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+      font-size: 0.84rem;
+    }
+
+    .project {
+      border-radius: 16px;
+      border: 1px solid rgba(30, 64, 175, 0.9);
+      background: radial-gradient(circle at 0 0, rgba(34, 211, 238, 0.18), transparent 65%),
+                  rgba(15, 23, 42, 0.96);
+      padding: 10px 11px 9px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 720px) {
+      .project {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .project-title {
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    .project-title span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    .project-desc {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .project-tag {
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 0.74rem;
+      color: var(--text-soft);
+    }
+
+    .project-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      text-align: right;
+    }
+
+    .project-link {
+      padding: 5px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(34, 211, 238, 0.9);
+      color: #e0f2fe;
+      background: rgba(8, 47, 73, 0.96);
+      font-size: 0.76rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .project-link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(8, 47, 73, 0.95);
+      background: rgba(12, 74, 110, 0.98);
+      border-color: #7dd3fc;
+    }
+
+    .project-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    /* STACK */
+    .stack-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+
+    .stack-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+    }
+
+    .stack-pill {
+      padding: 3px 9px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(51, 65, 85, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      color: var(--text-soft);
+    }
+
+    footer {
+      margin-top: 12px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-decoration-style: dotted;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="avatar-ring">
+        <div class="avatar-inner">AC</div>
+      </div>
+      <div class="sidebar-header">
+        <div class="sidebar-name">Apurva Chavan</div>
+        <div class="sidebar-role">Founding Engineer • GenAI & Agents</div>
+      </div>
+      <div class="sidebar-tagline">
+        Building <span>agentic AI systems</span> that learn continuously from real work, not just from demos.
+      </div>
+      <div class="sidebar-links">
+        <a class="sidebar-link" href="https://github.com/Apurva1205" target="_blank" rel="noopener">
+          GitHub ↗
+        </a>
+        <a class="sidebar-link" href="#projects">Relevant repos</a>
+        <a class="sidebar-link" href="#leeroo-fit">Why Leeroo</a>
+      </div>
+
+      <div class="nav-list">
+        <div class="nav-label">SECTIONS</div>
+        <ul class="nav-items">
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#leeroo-fit">How I map to the role</a></li>
+          <li><a href="#projects">Agentic & LLM projects</a></li>
+          <li><a href="#stack">Stack & experience</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-meta">
+        <div>Quick meta</div>
+        <div class="meta-pill-row">
+          <span class="meta-pill"><strong>YC-fan</strong> • following agentic wave</span>
+          <span class="meta-pill">Remote friendly • US/UK time-zone overlap</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Hero / Overview -->
+      <section class="hero-card" id="overview">
+        <div class="hero-top-row">
+          <div class="hero-company">
+            <div class="company-pill">Founding Engineer @ <span>Leeroo (X25)</span></div>
+            <div class="company-pill">Continuously Learning AI Agents</div>
+          </div>
+          <div class="location-text">London / Remote • Compatible time zones • YC-backed</div>
+        </div>
+
+        <h1 class="hero-title-main">
+          Turning real-world problems into <span>continuously learning agents</span> that ship to production.
+        </h1>
+        <p class="hero-sub">
+          I’m a <strong>hands-on AI/ML engineer and data scientist</strong> with experience building
+          <strong>LLM-powered applications, evaluators, and agent-like workflows</strong>. I love taking messy,
+          ambiguous business asks and turning them into <strong>scoped, shippable systems</strong> that improve with
+          data, feedback, and iteration.
+        </p>
+
+        <div class="hero-grid">
+          <div class="hero-col">
+            <div class="hero-label">Role focus</div>
+            <div class="hero-value">
+              Founding Engineer who can go from <strong>pre-sales discovery → prototype → production rollout</strong>,
+              then loop what works back into a reusable platform.
+            </div>
+            <div class="hero-tags">
+              <span class="hero-tag">Customer-facing</span>
+              <span class="hero-tag">Agentic workflows</span>
+              <span class="hero-tag">LLM apps</span>
+              <span class="hero-tag">Enterprise integration</span>
+            </div>
+          </div>
+          <div class="hero-col">
+            <div class="hero-label">Leeroo themes I resonate with</div>
+            <div class="hero-value">
+              Continuous learning, <strong>agents as expert teammates</strong>, and reusing patterns from customer work
+              instead of re-inventing solutions for every deployment.
+            </div>
+            <div class="hero-tags">
+              <span class="hero-tag">Learning from feedback & past runs</span>
+              <span class="hero-tag">Vector search & retrieval</span>
+              <span class="hero-tag">Model evaluation & guardrails</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <a href="#leeroo-fit" class="btn btn-primary">See how I map to the Founding Engineer role →</a>
+          <a href="#projects" class="btn btn-ghost">Jump to relevant projects</a>
+          <div class="hero-mini-note">Current focus: <span>agent frameworks, RAG, and evaluation-first design</span></div>
+        </div>
+      </section>
+
+      <!-- How I fit Leeroo -->
+      <section id="leeroo-fit">
+        <h2><span></span> How I map to the Founding Engineer role</h2>
+        <div class="section-body">
+          <div class="subheading">Customer-first, end-to-end problem solving</div>
+          <ul class="list">
+            <li>
+              Comfortable taking <strong>ambiguous business asks</strong> ("help my team work faster", "clean up this process") and
+              decomposing them into <strong>scoped, shippable agent flows</strong>: data understanding, context design, evaluation
+              plan, and rollout.
+            </li>
+            <li>
+              Used to working across <strong>multiple stakeholders</strong> (founders, engineers, non-technical teams) and keeping a
+              tight feedback loop on what is working and what needs re-design.
+            </li>
+            <li>
+              I treat every deployment as a <strong>learning loop</strong>: instrumenting agents, collecting feedback, and folding
+              patterns back into reusable components.
+            </li>
+          </ul>
+
+          <div class="subheading">Building GenAI & agentic applications</div>
+          <ul class="list">
+            <li>
+              Practical experience with <strong>LLM applications and NLP workflows</strong>: text classification, retrieval,
+              ranking, and context engineering.
+            </li>
+            <li>
+              Comfortable with <strong>vector databases and retrieval workflows</strong> (RAG-style pipelines) to ground agents in
+              company knowledge bases.
+            </li>
+            <li>
+              I think in terms of <strong>tools, memories, and policies</strong> – how an agent should observe, decide, act,
+              and learn from each episode.
+            </li>
+          </ul>
+
+          <div class="subheading">Working with core research & product teams</div>
+          <ul class="list">
+            <li>
+              I naturally document <strong>reusable patterns</strong> from project work: prompts, evaluators, routing logic,
+              data schemas – perfect for feeding into a platform / Learning Engine.
+            </li>
+            <li>
+              Comfortable collaborating with research teams, translating customer pain points into
+              <strong>concrete product asks</strong> (new tools, memory modules, evaluators, dashboards).
+            </li>
+          </ul>
+
+          <div class="subheading">Communication</div>
+          <ul class="list">
+            <li>
+              Used to <strong>explaining complex systems in simple language</strong> – what the agent does, where it can fail,
+              how we’ll monitor it, and what success looks like in business terms.
+            </li>
+          </ul>
+
+          <div class="chip-row">
+            <div class="chip highlight">End-to-end ownership</div>
+            <div class="chip">Scoping → Implementation → Evaluation → Iteration</div>
+            <div class="chip">Customer-facing engineering</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects">
+        <h2><span></span> Agentic & LLM-relevant GitHub projects</h2>
+        <div class="section-body">
+          <p style="margin-top:0;margin-bottom:6px;">
+            A few public repos from <code style="font-family:var(--font-mono);">Apurva1205</code> that show how I work with
+            <strong>LLMs, NLP, and evaluation-first ML</strong>.
+          </p>
+          <div class="projects-grid">
+            <article class="project">
+              <div>
+                <div class="project-title">AI-RESUME-ENHANCER <span>(LLM-style scoring & recommendations)</span></div>
+                <p class="project-desc">
+                  Builds a pipeline that parses resumes and job descriptions, then scores fit and highlights missing
+                  skills. Very similar to an <strong>evaluation and feedback loop</strong> around a knowledge base – like
+                  an agent that helps hiring teams reason about candidates.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">Python</span>
+                  <span class="project-tag">NLP</span>
+                  <span class="project-tag">Scoring & ranking</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Apurva1205/AI-RESUME-ENHANCER" target="_blank" rel="noopener">View repo ↗</a>
+                <div class="project-note">Shows how I design pipelines and evaluation metrics around text workflows.</div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div>
+                <div class="project-title">LLMs-in-Finance <span>(GenAI & agents for domain workflows)</span></div>
+                <p class="project-desc">
+                  Exploration of <strong>LLM and agent patterns</strong> in a financial context – using models to
+                  analyze documents, surface insights, and structure decisions. The same approach can be applied to
+                  continuously learning agents inside enterprises.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">LLMs</span>
+                  <span class="project-tag">Agents</span>
+                  <span class="project-tag">Domain workflows</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Apurva1205/LLMs-in-Finance" target="_blank" rel="noopener">View repo ↗</a>
+                <div class="project-note">Illustrates how I think about domain-specific GenAI systems.</div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div>
+                <div class="project-title">Tokenizers <span>(Foundational NLP understanding)</span></div>
+                <p class="project-desc">
+                  Custom tokenizer experiments, including BPE-style approaches for multiple languages. This work
+                  underpins a good understanding of <strong>how LLMs see text</strong> and why context design matters.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">NLP</span>
+                  <span class="project-tag">BPE</span>
+                  <span class="project-tag">Multi-language</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Apurva1205/Tokenizers" target="_blank" rel="noopener">View repo ↗</a>
+                <div class="project-note">Shows depth in tokens, context length, and trade-offs.</div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div>
+                <div class="project-title">Text-Classification & News-Category-Classification <span>(Evaluation-first ML)</span></div>
+                <p class="project-desc">
+                  End-to-end pipelines for <strong>text classification, cleaning, model training, and evaluation</strong>.
+                  The evaluation mindset carries directly into how I’d measure and improve Leeroo agents.
+                </p>
+                <div class="project-tags">
+                  <span class="project-tag">PyTorch / ML</span>
+                  <span class="project-tag">NLP</span>
+                  <span class="project-tag">Model evaluation</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/Apurva1205/Text-Classification" target="_blank" rel="noopener">Text-Classification ↗</a>
+                <a class="project-link" href="https://github.com/Apurva1205/News-Category-Classification" target="_blank" rel="noopener">News-Category ↗</a>
+                <div class="project-note">Highlights comfort with metrics, error analysis, and iteration.</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack & Experience -->
+      <section id="stack">
+        <h2><span></span> Stack & experience</h2>
+        <div class="section-body">
+          <p style="margin-top:0;">
+            I match Leeroo’s expectations for a <strong>hands-on Founding Engineer</strong> who can talk to customers,
+            write production-ready code, and collaborate with research.
+          </p>
+          <div class="stack-rows">
+            <div class="stack-row">
+              <span class="stack-label">Languages</span>
+              <span class="stack-pill">Python (primary)</span>
+              <span class="stack-pill">TypeScript / JavaScript (comfortable)</span>
+              <span class="stack-pill">Some C++/Java exposure</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">ML & NLP</span>
+              <span class="stack-pill">Scikit-learn</span>
+              <span class="stack-pill">PyTorch</span>
+              <span class="stack-pill">Transformers</span>
+              <span class="stack-pill">Evaluation & monitoring</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">Agents & Retrieval</span>
+              <span class="stack-pill">Agentic workflow design</span>
+              <span class="stack-pill">Vector DB + RAG patterns</span>
+              <span class="stack-pill">Tool / skill abstractions</span>
+            </div>
+            <div class="stack-row">
+              <span class="stack-label">Product</span>
+              <span class="stack-pill">Customer discovery & scoping</span>
+              <span class="stack-pill">Pre-sales technical support</span>
+              <span class="stack-pill">Docs & storytelling</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        Crafted by Apurva Chavan for the <strong>Founding Engineer</strong> role at Leeroo (X25). GitHub: <a href="https://github.com/Apurva1205" target="_blank" rel="noopener">Apurva1205</a>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
